@@ -2,8 +2,8 @@
 
 set -e
 
-if [[ ! -f /var/lib/ldap-account-manager/sess/.htaccess ]]; then
-cat << EOF > /var/lib/ldap-account-manager/sess/.htaccess
+if [[ ! -f /var/www/html/sess/.htaccess ]]; then
+cat << EOF > /var/www/html/sess/.htaccess
 <Files *>
   <IfModule !mod_authz_core.c>
     Order allow,deny
@@ -280,6 +280,8 @@ logLevel: 4
 # log destination
 logDestination: SYSLOG
 EOF
+
+chown -R www-data:www-data /config
 
 touch /config/setup
 fi
